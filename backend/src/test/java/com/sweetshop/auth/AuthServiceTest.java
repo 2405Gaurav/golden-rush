@@ -155,4 +155,20 @@ class AuthServiceTest {
     // Then
     assertEquals(Role.USER, response.role());
   }
+  
+  @Test
+  void register_shouldEncodePassword() {
+    // Given
+    RegisterRequest req = new RegisterRequest("encode@example.com", "plainPassword");
+    when(userRepository.existsByEmailIgnoreCase(anyString())).thenReturn(false);
+    when(passwordEncoder.encode("plainPassword")).thenReturn("hashedPassword");
+    when(jwtService.createAccessToken(any(), anyString(), any())).thenReturn("testToken");
+    
+    // When
+    authService.register(req);
+    
+    // Then
+    verify(passwordEncoder).encode("plainPassword");
+    verify(userRepository).save(argThat(user -> "hashedPassword".equals(user.passwordHash)));
+  }
 }
