@@ -1,0 +1,21 @@
+# Ignore backend directory (Java Spring Boot - not deployable on Vercel)
+backend/
+*.log
+logs/
+.env.local
+.env*.local
+
+# Ignore build artifacts
+.next/
+node_modules/
+
+# Ignore test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Ignore development files
+.vscode/
+*.md
+!README.md
