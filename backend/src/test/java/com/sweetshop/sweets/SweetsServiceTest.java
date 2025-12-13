@@ -221,4 +221,61 @@ class SweetsServiceTest {
     assertNotNull(result);
     verify(sweetRepository).findAll(any(Specification.class));
   }
+  
+  @Test
+  void create_shouldSetTimestamps() {
+    // Given
+    CreateSweetRequest req = new CreateSweetRequest("Timestamp Sweet", "candies", new BigDecimal("2.00"), 3);
+    when(sweetRepository.save(any(SweetEntity.class))).thenAnswer(invocation -> {
+      SweetEntity entity = invocation.getArgument(0);
+      assertNotNull(entity.createdAt);
+      assertNotNull(entity.updatedAt);
+      return entity;
+    });
+    
+    // When
+    sweetsService.create(req);
+    
+    // Then
+    verify(sweetRepository).save(any(SweetEntity.class));
+  }
+  
+  @Test
+  void update_shouldUpdateTimestamp() {
+    // Given
+    UpdateSweetRequest req = new UpdateSweetRequest("Updated", "category", new BigDecimal("5.00"), 10);
+    when(sweetRepository.findById(testSweetId)).thenReturn(Optional.of(testSweet));
+    
+    // When
+    sweetsService.update(testSweetId, req);
+    
+    // Then
+    assertNotNull(testSweet.updatedAt);
+  }
+  
+  @Test
+  void purchase_shouldUpdateTimestamp() {
+    // Given
+    AdjustStockRequest req = new AdjustStockRequest(2);
+    when(sweetRepository.findById(testSweetId)).thenReturn(Optional.of(testSweet));
+    
+    // When
+    sweetsService.purchase(testSweetId, req);
+    
+    // Then
+    assertNotNull(testSweet.updatedAt);
+  }
+  
+  @Test
+  void restock_shouldUpdateTimestamp() {
+    // Given
+    AdjustStockRequest req = new AdjustStockRequest(5);
+    when(sweetRepository.findById(testSweetId)).thenReturn(Optional.of(testSweet));
+    
+    // When
+    sweetsService.restock(testSweetId, req);
+    
+    // Then
+    assertNotNull(testSweet.updatedAt);
+  }
 }
