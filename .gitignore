@@ -7,8 +7,7 @@ node_modules/
 
 backend/target/
 
+# Railway
+.railway/
 
-
-
-
-.vercel
+# Vercel (deprecated)

@@ -58,6 +58,32 @@ npm run dev
 
 Frontend runs on `http://localhost:3000`.
 
+## Deployment
+
+### Deploy to Railway (Recommended)
+
+Deploy both frontend and backend to Railway using CLI:
+
+**Quick Deploy:**
+```powershell
+# Windows
+.\scripts\deploy-all-railway.ps1
+
+# Linux/Mac
+./scripts/deploy-all-railway.sh
+```
+
+**Or deploy separately:**
+```powershell
+# Backend
+.\scripts\deploy-backend-railway.ps1
+
+# Frontend
+.\scripts\deploy-frontend-railway.ps1
+```
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
+
 ## API Checklist (Kata)
 
 - `POST /api/auth/register`
