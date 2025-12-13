@@ -1,3 +1,5 @@
+# SSMS - Sweet Shop Management System
+
 ## Sweet Shop Management System (TDD Kata)
 
 This repo contains:
@@ -67,8 +69,3 @@ Frontend runs on `http://localhost:3000`.
 - `DELETE /api/sweets/:id` (admin)
 - `POST /api/sweets/:id/purchase` (protected)
 - `POST /api/sweets/:id/restock` (admin)
-
-
-
-
-
