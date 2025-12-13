@@ -13,11 +13,14 @@ RUN npm ci || npm install
 # Copy source code
 COPY . .
 
-# Build the application with environment variables
-# NEXT_PUBLIC_* variables are embedded at build time
-ARG NEXT_PUBLIC_API_BASE_URL
+# Define build-time arguments (Railway passes env vars as build args)
+ARG NEXT_PUBLIC_API_BASE_URL=https://sweetshop-backend-production.up.railway.app
+
+# Set environment variables for Next.js build
+# NEXT_PUBLIC_* vars must be available at build time
 ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 
+# Build the application
 RUN npm run build
 
 # Production stage
