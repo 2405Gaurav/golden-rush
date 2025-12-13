@@ -125,4 +125,34 @@ class AuthServiceTest {
     assertThrows(BadCredentialsException.class, () -> authService.login(req));
     verify(jwtService, never()).createAccessToken(any(), anyString(), any());
   }
+  
+  @Test
+  void register_shouldSetCreatedAtTimestamp() {
+    // Given
+    RegisterRequest req = new RegisterRequest("timestamp@example.com", "password123!");
+    when(userRepository.existsByEmailIgnoreCase(anyString())).thenReturn(false);
+    when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword");
+    when(jwtService.createAccessToken(any(), anyString(), any())).thenReturn("testToken");
+    
+    // When
+    authService.register(req);
+    
+    // Then
+    verify(userRepository).save(argThat(user -> user.createdAt != null));
+  }
+  
+  @Test
+  void register_shouldAssignUserRole() {
+    // Given
+    RegisterRequest req = new RegisterRequest("role@example.com", "password123!");
+    when(userRepository.existsByEmailIgnoreCase(anyString())).thenReturn(false);
+    when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword");
+    when(jwtService.createAccessToken(any(), anyString(), any())).thenReturn("testToken");
+    
+    // When
+    AuthResponse response = authService.register(req);
+    
+    // Then
+    assertEquals(Role.USER, response.role());
+  }
 }
