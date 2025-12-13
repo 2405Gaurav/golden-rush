@@ -72,7 +72,9 @@ class AuthServiceTest {
     when(userRepository.existsByEmailIgnoreCase(anyString())).thenReturn(true);
     
     // When & Then
-    assertThrows(ConflictException.class, () -> authService.register(req));
+    ConflictException exception = assertThrows(ConflictException.class, 
+        () -> authService.register(req));
+    assertEquals("Email already registered", exception.getMessage());
     verify(userRepository, never()).save(any());
   }
   
