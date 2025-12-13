@@ -63,30 +63,38 @@ export default function MobileNavigation() {
         <div>
           <h2 className="text-xl font-black mb-4">CATEGORIES</h2>
           <div className="space-y-2">
-            <Button
-              variant="outline"
-              className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
-            >
-              🍫 Chocolates
-            </Button>
-            <Button
-              variant="outline"
-              className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
-            >
-              🍬 Candies
-            </Button>
-            <Button
-              variant="outline"
-              className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
-            >
-              🍰 Cakes
-            </Button>
-            <Button
-              variant="outline"
-              className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
-            >
-              🍪 Cookies
-            </Button>
+            <Link href="/sweets?category=chocolates">
+              <Button
+                variant="outline"
+                className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+              >
+                🍫 Chocolates
+              </Button>
+            </Link>
+            <Link href="/sweets?category=candies">
+              <Button
+                variant="outline"
+                className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+              >
+                🍬 Candies
+              </Button>
+            </Link>
+            <Link href="/sweets?category=cakes">
+              <Button
+                variant="outline"
+                className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+              >
+                🍰 Cakes
+              </Button>
+            </Link>
+            <Link href="/sweets?category=cookies">
+              <Button
+                variant="outline"
+                className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+              >
+                🍪 Cookies
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

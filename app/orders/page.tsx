@@ -76,7 +76,7 @@ export default function OrdersPage() {
 
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-2xl font-black">${order.total.toFixed(2)}</p>
+                      <p className="text-2xl font-black">₹{order.total.toFixed(2)}</p>
                       {order.status === "pending" && (
                         <div className="flex items-center gap-1 justify-end mt-1">
                           <Clock className="h-4 w-4 text-yellow-600" />

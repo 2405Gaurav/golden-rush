@@ -36,5 +36,8 @@ app:
     enabled: ${BOOTSTRAP_ADMIN_ENABLED:true}
     email: ${BOOTSTRAP_ADMIN_EMAIL:admin@sweetshop.local}
     password: ${BOOTSTRAP_ADMIN_PASSWORD:admin123!}
+  bootstrap-sweets:
+    enabled: ${BOOTSTRAP_SWEETS_ENABLED:true}
+    default-quantity: ${BOOTSTRAP_SWEETS_DEFAULT_QUANTITY:100}
 
 

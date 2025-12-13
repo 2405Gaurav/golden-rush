@@ -61,7 +61,7 @@ export default function AnalyticsPage() {
                 <DollarSign className="h-6 w-6" />
               </div>
               <p className="text-sm font-bold text-gray-600 mb-1">Total Revenue</p>
-              <p className="text-3xl font-black">$12,456</p>
+              <p className="text-3xl font-black">₹12,456</p>
               <p className="text-sm font-bold text-green-600 mt-2">↑ 12% from last month</p>
             </div>
 
@@ -88,7 +88,7 @@ export default function AnalyticsPage() {
                 <TrendingUp className="h-6 w-6" />
               </div>
               <p className="text-sm font-bold text-gray-600 mb-1">Avg Order Value</p>
-              <p className="text-3xl font-black">$14.55</p>
+              <p className="text-3xl font-black">₹14.55</p>
               <p className="text-sm font-bold text-green-600 mt-2">↑ 5% from last month</p>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function AnalyticsPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-black">${product.revenue.toFixed(2)}</p>
+                    <p className="text-2xl font-black">₹{product.revenue.toFixed(2)}</p>
                   </div>
                 </div>
               ))}

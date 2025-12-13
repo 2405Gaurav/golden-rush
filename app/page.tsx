@@ -4,7 +4,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Candy, Plus, LogOut, ShoppingCart } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Candy, Plus, LogOut, ShoppingCart, Search } from "lucide-react"
 import SweetCard from "@/components/sweet-card"
 import QuickStats from "@/components/quick-stats"
 import MobileNavigation from "@/components/mobile-navigation"
@@ -13,7 +14,7 @@ import { Menu } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
 import { useCart } from "@/components/cart-provider"
 import { apiFetch, type Sweet } from "@/lib/api"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { getImageForCategory } from "@/lib/image-utils"
 import LandingPage from "@/components/landing-page"
 
@@ -21,8 +22,10 @@ export default function Dashboard() {
   const router = useRouter()
   const { token, role, isReady, logout } = useAuth()
   const { totalItems } = useCart()
-  const [popularSweets, setPopularSweets] = useState<Sweet[]>([])
+  const [allSweets, setAllSweets] = useState<Sweet[]>([])
   const [loading, setLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState("")
   const isAdmin = role === "ADMIN"
 
   useEffect(() => {
@@ -33,12 +36,12 @@ export default function Dashboard() {
       return
     }
 
-    // Fetch popular sweets (first 6 sweets) only if authenticated
+    // Fetch all sweets if authenticated
     const fetchSweets = async () => {
       try {
         setLoading(true)
         const sweets = await apiFetch<Sweet[]>("/api/sweets", { token })
-        setPopularSweets(sweets.slice(0, 6))
+        setAllSweets(sweets)
       } catch (e) {
         console.error("Failed to load sweets:", e)
       } finally {
@@ -60,6 +63,29 @@ export default function Dashboard() {
       window.removeEventListener("storage", handlePurchase)
     }
   }, [isReady, token, router])
+
+  // Filter sweets by category and search query
+  const filteredSweets = useMemo(() => {
+    let filtered = allSweets
+
+    // Filter by category
+    if (selectedCategory) {
+      filtered = filtered.filter((sweet) => sweet.category.toLowerCase() === selectedCategory.toLowerCase())
+    }
+
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.trim().toLowerCase()
+      filtered = filtered.filter(
+        (sweet) =>
+          sweet.name.toLowerCase().includes(query) ||
+          sweet.category.toLowerCase().includes(query) ||
+          sweet.price.toString().includes(query)
+      )
+    }
+
+    return filtered
+  }, [allSweets, selectedCategory, searchQuery])
 
   // Show landing page immediately for unauthenticated users (no auth required)
   if (!token) {
@@ -102,6 +128,16 @@ export default function Dashboard() {
 
             {/* Desktop buttons */}
             <div className="hidden sm:flex items-center gap-3">
+              {/* Search Input */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <Input
+                  placeholder="Search sweets..."
+                  className="pl-10 h-10 w-48 rounded-xl border-2 border-black font-bold bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
               {isAdmin && (
                 <Link href="/sweets/new">
                   <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-xl border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -202,25 +238,37 @@ export default function Dashboard() {
               <div className="space-y-2">
                 <Button
                   variant="outline"
-                  className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+                  onClick={() => setSelectedCategory(selectedCategory === "chocolates" ? null : "chocolates")}
+                  className={`w-full justify-start gap-2 rounded-xl border-2 border-black font-bold ${
+                    selectedCategory === "chocolates" ? "bg-pink-200" : "bg-transparent"
+                  }`}
                 >
                   🍫 Chocolates
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+                  onClick={() => setSelectedCategory(selectedCategory === "candies" ? null : "candies")}
+                  className={`w-full justify-start gap-2 rounded-xl border-2 border-black font-bold ${
+                    selectedCategory === "candies" ? "bg-pink-200" : "bg-transparent"
+                  }`}
                 >
                   🍬 Candies
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+                  onClick={() => setSelectedCategory(selectedCategory === "cakes" ? null : "cakes")}
+                  className={`w-full justify-start gap-2 rounded-xl border-2 border-black font-bold ${
+                    selectedCategory === "cakes" ? "bg-pink-200" : "bg-transparent"
+                  }`}
                 >
                   🍰 Cakes
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start gap-2 rounded-xl border-2 border-black font-bold bg-transparent"
+                  onClick={() => setSelectedCategory(selectedCategory === "cookies" ? null : "cookies")}
+                  className={`w-full justify-start gap-2 rounded-xl border-2 border-black font-bold ${
+                    selectedCategory === "cookies" ? "bg-pink-200" : "bg-transparent"
+                  }`}
                 >
                   🍪 Cookies
                 </Button>
@@ -257,7 +305,7 @@ export default function Dashboard() {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {popularSweets.map((sweet) => (
+                  {filteredSweets.map((sweet) => (
                     <SweetCard
                       key={sweet.id}
                       id={sweet.id}
@@ -270,9 +318,9 @@ export default function Dashboard() {
                       sweet={sweet}
                     />
                   ))}
-                  {popularSweets.length === 0 && !loading && (
+                  {filteredSweets.length === 0 && !loading && (
                     <div className="col-span-full bg-white border-4 border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] font-bold text-center">
-                      No sweets available
+                      {selectedCategory || searchQuery ? "No sweets found matching your filters" : "No sweets available"}
                     </div>
                   )}
                 </div>

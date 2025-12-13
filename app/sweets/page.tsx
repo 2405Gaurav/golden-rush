@@ -11,12 +11,13 @@ import { useAuth } from "@/components/auth-provider"
 import { useCart } from "@/components/cart-provider"
 import { apiFetch, type Sweet } from "@/lib/api"
 import { useEffect, useMemo, useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { trackPurchase } from "@/components/quick-stats"
 import { getImageForCategory } from "@/lib/image-utils"
 
 export default function SweetsPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const { token, role, isReady, logout } = useAuth()
   const { totalItems } = useCart()
   const isAdmin = role === "ADMIN"
@@ -25,14 +26,29 @@ export default function SweetsPage() {
   const [items, setItems] = useState<Sweet[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(searchParams.get("category"))
 
   const filtered = useMemo(() => {
+    let result = items
+
+    // Filter by category if selected
+    if (selectedCategory) {
+      result = result.filter((s) => s.category.toLowerCase() === selectedCategory.toLowerCase())
+    }
+
+    // Filter by search query
     const q = query.trim().toLowerCase()
-    if (!q) return items
-    return items.filter(
-      (s) => s.name.toLowerCase().includes(q) || s.category.toLowerCase().includes(q) || s.price.toString().includes(q),
-    )
-  }, [items, query])
+    if (q) {
+      result = result.filter(
+        (s) =>
+          s.name.toLowerCase().includes(q) ||
+          s.category.toLowerCase().includes(q) ||
+          s.price.toString().includes(q),
+      )
+    }
+
+    return result
+  }, [items, query, selectedCategory])
 
   useEffect(() => {
     if (!isReady) return
@@ -53,6 +69,12 @@ export default function SweetsPage() {
       }
     })()
   }, [isReady, token, router])
+
+  // Update selected category when URL param changes
+  useEffect(() => {
+    const categoryParam = searchParams.get("category")
+    setSelectedCategory(categoryParam)
+  }, [searchParams])
 
   async function purchase(id: string) {
     if (!token) return

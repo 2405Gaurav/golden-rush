@@ -131,7 +131,7 @@ export default function QuickStats() {
     },
     {
       title: "Revenue",
-      value: `$${revenueToday.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: `₹${revenueToday.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       icon: <TrendingUp className="h-6 w-6" />,
       color: "bg-yellow-400",
     },

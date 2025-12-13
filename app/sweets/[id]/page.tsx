@@ -181,7 +181,7 @@ export default function EditSweetPage({ params }: { params: { id: string } }) {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="price" className="text-lg font-bold mb-2 block">
-                      Price ($)
+                      Price (₹)
                     </Label>
                     <Input
                       id="price"

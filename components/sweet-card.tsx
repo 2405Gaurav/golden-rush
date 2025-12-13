@@ -74,7 +74,7 @@ export default function SweetCard({
       </div>
 
       <h3 className="text-xl font-black mb-2">{name}</h3>
-      <p className="text-2xl font-black mb-4">${price.toFixed(2)}</p>
+      <p className="text-2xl font-black mb-4">₹{price.toFixed(2)}</p>
 
       <div className="flex gap-2 items-stretch w-full max-w-full">
         {!canAdmin && (

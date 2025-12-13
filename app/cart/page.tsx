@@ -125,7 +125,7 @@ export default function CartPage() {
                         <h3 className="text-xl font-black mb-1">{item.sweet.name}</h3>
                         <p className="text-gray-600 font-bold">{item.sweet.category}</p>
                         <p className="text-lg font-black text-pink-600 mt-2">
-                          ${parseFloat(item.sweet.price).toFixed(2)} each
+                          ₹{parseFloat(item.sweet.price).toFixed(2)} each
                         </p>
                       </div>
 
@@ -156,7 +156,7 @@ export default function CartPage() {
 
                         <div className="text-right min-w-[100px]">
                           <p className="text-lg font-black">
-                            ${(parseFloat(item.sweet.price) * item.quantity).toFixed(2)}
+                            ₹{(parseFloat(item.sweet.price) * item.quantity).toFixed(2)}
                           </p>
                         </div>
 
@@ -178,7 +178,7 @@ export default function CartPage() {
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-2xl font-black">Total:</span>
                   <span className="text-3xl font-black text-pink-600">
-                    ${totalPrice.toFixed(2)}
+                    ₹{totalPrice.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex gap-3">
