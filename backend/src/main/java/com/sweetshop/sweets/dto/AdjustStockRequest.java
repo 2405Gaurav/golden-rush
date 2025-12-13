@@ -8,3 +8,4 @@ public record AdjustStockRequest(@Min(1) int quantity) {}
 
 
 
+

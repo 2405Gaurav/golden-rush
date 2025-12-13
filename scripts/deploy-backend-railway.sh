@@ -47,3 +47,4 @@ echo "      - CORS_ALLOWED_ORIGINS (include your Vercel frontend URL)"
 echo "   3. Get your backend URL from Railway dashboard"
 echo "   4. Update frontend NEXT_PUBLIC_API_BASE_URL in Vercel"
 
+

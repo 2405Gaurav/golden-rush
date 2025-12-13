@@ -174,3 +174,4 @@ class AuthServiceTest {
     verify(userRepository).save(argThat(user -> "hashedPassword".equals(user.passwordHash)));
   }
 }
+

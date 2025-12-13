@@ -20,3 +20,4 @@ railway variables --service sweetshop-frontend | Select-String -Pattern "NEXT_PU
 Write-Host "`n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host "`n✅ Verification Complete!" -ForegroundColor Green
 
+

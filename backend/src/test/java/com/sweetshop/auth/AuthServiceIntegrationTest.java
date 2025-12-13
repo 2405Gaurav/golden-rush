@@ -51,3 +51,4 @@ class AuthServiceIntegrationTest extends PostgresTestBase {
     assertThrows(ConflictException.class, () -> authService.register(req2));
   }
 }
+

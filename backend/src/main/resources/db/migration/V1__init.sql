@@ -26,3 +26,4 @@ CREATE INDEX IF NOT EXISTS idx_sweets_price ON sweets (price);
 
 
 
+

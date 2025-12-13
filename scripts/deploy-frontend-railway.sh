@@ -51,3 +51,4 @@ echo "      - NEXT_PUBLIC_API_BASE_URL (your backend API URL)"
 echo "   3. Get your frontend URL from Railway dashboard"
 echo "   4. Update backend CORS settings to allow your Railway frontend domain"
 
+

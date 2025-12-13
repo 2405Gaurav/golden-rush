@@ -63,3 +63,4 @@ Write-Host "   5. Redeploy both services:" -ForegroundColor White
 Write-Host "      cd backend && railway up" -ForegroundColor Gray
 Write-Host "      cd .. && railway up" -ForegroundColor Gray
 
+

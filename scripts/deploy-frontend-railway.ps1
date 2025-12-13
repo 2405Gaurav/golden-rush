@@ -47,3 +47,4 @@ Write-Host "      - NEXT_PUBLIC_API_BASE_URL (your backend API URL)" -Foreground
 Write-Host "   3. Get your frontend URL from Railway dashboard" -ForegroundColor White
 Write-Host "   4. Update backend CORS settings to allow your Railway frontend domain" -ForegroundColor White
 
+

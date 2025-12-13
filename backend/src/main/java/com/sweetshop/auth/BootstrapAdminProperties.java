@@ -9,3 +9,4 @@ public record BootstrapAdminProperties(boolean enabled, String email, String pas
 
 
 
+

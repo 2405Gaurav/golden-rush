@@ -22,3 +22,4 @@ class ApiExceptionHandlerTest {
     // For now, this is a placeholder test structure
   }
 }
+

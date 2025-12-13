@@ -64,3 +64,4 @@ Write-Host "   3. Get frontend URL: railway domain" -ForegroundColor White
 Write-Host "   4. Update backend CORS: cd backend && railway variables set CORS_ALLOWED_ORIGINS=<frontend-url>" -ForegroundColor White
 Write-Host "   5. Redeploy: railway up (in both directories)`n" -ForegroundColor White
 
+

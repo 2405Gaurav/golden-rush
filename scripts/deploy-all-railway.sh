@@ -67,3 +67,4 @@ echo "   5. Redeploy both services:"
 echo "      cd backend && railway up"
 echo "      cd .. && railway up"
 
+

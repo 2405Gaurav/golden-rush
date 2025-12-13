@@ -117,3 +117,4 @@ class SweetSpecificationsTest {
     assertNotNull(spec);
   }
 }
+

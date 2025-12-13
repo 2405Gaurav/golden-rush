@@ -31,3 +31,4 @@ export function getImagesForCategory(category: string): string[] {
   return categoryImages[normalizedCategory] || ["/placeholder.jpg"]
 }
 
+

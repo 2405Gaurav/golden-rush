@@ -66,3 +66,4 @@ class SweetsServiceIntegrationTest extends PostgresTestBase {
     assertThrows(ConflictException.class, () -> sweetsService.purchase(created.id(), purchaseReq));
   }
 }
+
