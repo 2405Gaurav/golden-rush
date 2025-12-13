@@ -13,7 +13,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Sweet Shop - Manage Your Confectionery Business",
   description: "Sweet shop management system with neobrutalist design",
-  generator: "v0.app",
   icons: {
     icon: [
       {
