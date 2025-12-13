@@ -27,7 +27,7 @@ public class SweetsService {
   }
 
   public SweetDto get(UUID id) {
-    SweetEntity s = sweets.findById(id).orElseThrow(() -> new com.sweetshop.common.NotFoundException("Sweet not found"));
+    SweetEntity s = sweets.findById(id).orElseThrow(() -> new NotFoundException("Sweet not found"));
     return toDto(s);
   }
 
