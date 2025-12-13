@@ -86,9 +86,7 @@ class SweetsServiceTest {
     when(sweetRepository.findById(nonExistentId)).thenReturn(Optional.empty());
     
     // When & Then
-    NotFoundException exception = assertThrows(NotFoundException.class, 
-        () -> sweetsService.get(nonExistentId));
-    assertEquals("Sweet not found", exception.getMessage());
+    assertThrows(NotFoundException.class, () -> sweetsService.get(nonExistentId));
   }
   
   @Test
@@ -170,7 +168,9 @@ class SweetsServiceTest {
     when(sweetRepository.existsById(nonExistentId)).thenReturn(false);
     
     // When & Then
-    assertThrows(NotFoundException.class, () -> sweetsService.delete(nonExistentId));
+    NotFoundException exception = assertThrows(NotFoundException.class, 
+        () -> sweetsService.delete(nonExistentId));
+    assertEquals("Sweet not found", exception.getMessage());
     verify(sweetRepository, never()).deleteById(any());
   }
   
@@ -195,7 +195,9 @@ class SweetsServiceTest {
     when(sweetRepository.findById(testSweetId)).thenReturn(Optional.of(testSweet));
     
     // When & Then
-    assertThrows(ConflictException.class, () -> sweetsService.purchase(testSweetId, req));
+    ConflictException exception = assertThrows(ConflictException.class, 
+        () -> sweetsService.purchase(testSweetId, req));
+    assertEquals("Not enough stock to complete purchase", exception.getMessage());
   }
   
   @Test
