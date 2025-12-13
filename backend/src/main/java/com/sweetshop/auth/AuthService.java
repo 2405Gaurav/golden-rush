@@ -36,12 +36,14 @@ public class AuthService {
     if (users.existsByEmailIgnoreCase(req.email())) {
       throw new ConflictException("Email already registered");
     }
+    
     UserEntity u = new UserEntity();
     u.id = UUID.randomUUID();
     u.email = req.email().trim().toLowerCase();
     u.passwordHash = passwordEncoder.encode(req.password());
     u.role = Role.USER;
     u.createdAt = Instant.now();
+    
     users.save(u);
     String token = jwtService.createAccessToken(u.id, u.email, u.role);
     return new AuthResponse(token, u.role, u.email);
