@@ -86,7 +86,9 @@ class SweetsServiceTest {
     when(sweetRepository.findById(nonExistentId)).thenReturn(Optional.empty());
     
     // When & Then
-    assertThrows(NotFoundException.class, () -> sweetsService.get(nonExistentId));
+    NotFoundException exception = assertThrows(NotFoundException.class, 
+        () -> sweetsService.get(nonExistentId));
+    assertEquals("Sweet not found", exception.getMessage());
   }
   
   @Test
