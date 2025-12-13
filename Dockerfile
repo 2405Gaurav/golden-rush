@@ -13,7 +13,11 @@ RUN npm ci || npm install
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application with environment variables
+# NEXT_PUBLIC_* variables are embedded at build time
+ARG NEXT_PUBLIC_API_BASE_URL
+ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
+
 RUN npm run build
 
 # Production stage
