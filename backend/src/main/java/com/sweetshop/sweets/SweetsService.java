@@ -48,8 +48,9 @@ public class SweetsService {
     s.category = req.category().trim().toLowerCase();
     s.price = req.price();
     s.quantity = req.quantity();
-    s.createdAt = Instant.now();
-    s.updatedAt = Instant.now();
+    Instant now = Instant.now();
+    s.createdAt = now;
+    s.updatedAt = now;
     sweets.save(s);
     return toDto(s);
   }
