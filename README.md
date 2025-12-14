@@ -713,9 +713,6 @@ This project is part of a TDD Kata exercise and is available for educational pur
 
 </div>
 
-- **GitHub:** [Your GitHub Profile]
-- **Portfolio:** [Your Portfolio]
-
 ---
 
 ## 🙏 Acknowledgments
