@@ -103,3 +103,31 @@ The backend is the engine of SSMS, built with a focus on **SOLID principles** an
 ├── 📂 components              # Reusable React UI Components
 ├── 📂 lib                     # Axios API Clients & Typescript Logic
 └── 📂 scripts                 # Automation & Deploy Scripts
+
+🧪 Testing Strategy (TDD Excellence)
+"Tests are not a chore; they are the blueprint of our features."
+This project follows a strict Red-Green-Refactor cycle:
+Unit Tests: Testing individual service logic with Mockito.
+Integration Tests: Testing the API layer with MockMvc.
+End-to-End Tests: Utilizing Testcontainers to spin up a real PostgreSQL instance during the build process to ensure database queries are 100% accurate.
+Run Backend Tests:
+code
+Bash
+cd backend
+./mvnw clean test
+🤖 AI Collaboration
+This project showcases a modern AI-Augmented Development Workflow. ChatGPT was utilized as a "Senior Pair Programmer" to:
+Audit Security: Reviewing Spring Security 6 configurations for potential vulnerabilities.
+Accelerate Boilerplate: Generating initial JPA Repositories and DTOs from domain models.
+Debugging: Identifying edge cases in inventory logic during complex transaction testing.
+Refactoring: Applying DRY principles to frontend React components and hooks.
+Every AI suggestion was manually reviewed, modified, and tested before integration.
+<div align="center">
+<div style="border: 4px solid #ff6b6b; padding: 25px; border-radius: 0px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); margin: 30px 0; box-shadow: 10px 10px 0px #000;">
+🍬 Crafted with Precision & Sweetness
+Developed by [Gaurav]
+[ Backend Docs ] • [ Frontend Docs ] • [ Design Files ]
+</div>
+</div>
+```
+
