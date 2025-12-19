@@ -4,7 +4,6 @@
 
 **A full-stack TDD Kata project showcasing modern web development practices**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen?style=for-the-badge)](https://sweetshop.yashdhiman.in/)
 [![Backend](https://img.shields.io/badge/Backend-Spring%20Boot-blue?style=for-the-badge)](https://spring.io/projects/spring-boot)
 [![Frontend](https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge)](https://nextjs.org/)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL-blue?style=for-the-badge)](https://www.postgresql.org/)
@@ -13,19 +12,8 @@
 
 <div align="center" style="border: 3px solid #ff6b6b; padding: 20px; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 20px 0;">
 
-### 🎉 🚀 LIVE APPLICATION 🚀 🎉
 
 ```
-╔═══════════════════════════════════════════════════════════╗
-║                                                           ║
-║     🌐  https://sweetshop.yashdhiman.in/  🌐             ║
-║                                                           ║
-║              👉  CLICK TO EXPLORE  👈                     ║
-║                                                           ║
-╚═══════════════════════════════════════════════════════════╝
-```
-
-**[👉 VISIT LIVE APPLICATION 👈](https://sweetshop.yashdhiman.in/)**
 
 </div>
 
@@ -506,20 +494,6 @@ Frontend testing can be added using:
 
 <div align="center" style="border: 2px dashed #4ecdc4; padding: 15px; border-radius: 8px; background-color: #f0f8ff; margin: 15px 0;">
 
-**🌐 🎯 DEPLOYED APPLICATION 🎯 🌐**
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│    ⭐  https://sweetshop.yashdhiman.in/  ⭐             │
-│                                                         │
-│         🚀 Experience the full application 🚀           │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-
-**[👉 CLICK HERE TO VISIT 👈](https://sweetshop.yashdhiman.in/)**
-
 </div>
 
 ### Deployment Platforms
@@ -697,19 +671,9 @@ This project is part of a TDD Kata exercise and is available for educational pur
 
 ## 👤 Author
 
-**Yash Dhiman**
+**Gaurav**
 
 <div align="center" style="border: 2px solid #ffd93d; padding: 10px; border-radius: 5px; background-color: #fff9e6; margin: 10px 0;">
-
-**🔗 Live Application:** 
-
-```
-╭───────────────────────────────────────────────╮
-│  🌐 https://sweetshop.yashdhiman.in/ 🌐      │
-╰───────────────────────────────────────────────╯
-```
-
-**[👉 Visit Now 👈](https://sweetshop.yashdhiman.in/)**
 
 </div>
 
@@ -733,21 +697,7 @@ This project is part of a TDD Kata exercise and is available for educational pur
 
 <div style="border: 4px solid #ff6b6b; padding: 25px; border-radius: 15px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
 
-### 🎊 🎊 🎊
 
-```
-╔═══════════════════════════════════════════════════════════╗
-║                                                           ║
-║          🍬  SWEET SHOP MANAGEMENT SYSTEM  🍬            ║
-║                                                           ║
-║     🌐  https://sweetshop.yashdhiman.in/  🌐             ║
-║                                                           ║
-║              👉  TRY IT NOW  👈                           ║
-║                                                           ║
-╚═══════════════════════════════════════════════════════════╝
-```
-
-**[🚀 EXPLORE LIVE APPLICATION 🚀](https://sweetshop.yashdhiman.in/)**
 
 </div>
 
